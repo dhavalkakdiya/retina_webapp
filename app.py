@@ -46,7 +46,7 @@ def predict(image):
     test_image = image.resize((28,28))
     test_image = preprocessing.image.img_to_array(test_image)
     test_image = test_image / 255.0
-    test_image = np.expand_dims(test_image, axis=0)
+    #test_image = np.expand_dims(test_image, axis=0)
     class_names = ['No',
           'Mild',
           'Moderate',
@@ -54,7 +54,7 @@ def predict(image):
           'Proliferative'
           ]
     predictions = model.predict(test_image)
-    scores = tf.nn.elu(predictions[0])
+    scores = tf.nn.softmax(predictions[0])
     scores = scores.numpy()
     results = {
           'No': 0,
