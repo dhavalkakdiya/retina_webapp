@@ -51,6 +51,7 @@ def predict(image):
     
     test_image = test_image / 255.0
     test_image = np.expand_dims(test_image, axis=0)
+    test_image = np.repeat(test_image,3, axis = -1)
     class_names = ['No',
           'Mild',
           'Moderate',
