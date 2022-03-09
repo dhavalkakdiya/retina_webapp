@@ -40,7 +40,7 @@ def main():
 
 
 def predict(image):
-    classifier_model = "retina_model.h5"
+    classifier_model = "retina.h5"
     IMAGE_SHAPE = (28, 28,3)
     model = load_model(classifier_model)
     test_image = image.resize((28,28))
