@@ -13,7 +13,7 @@ fig = plt.figure()
 with open("custom.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-st.title('Retin Image Classification Group 30')
+st.title('Retina Image Classification Group 30')
 
 st.markdown("Welcome to web application that classifies Diabetic Retinopathy that have been separated into 5 categories :  No apparent retinopathy, Mild Non-proliferative , Moderate Non-proliferative , Severe Non-proliferative, Proliferative")
 
@@ -43,7 +43,7 @@ def predict(image):
     classifier_model = "retina_model.h5"
     IMAGE_SHAPE = (28, 28,3)
     model = load_model(classifier_model)
-    test_image = image.resize((28,28))
+    test_image = image.resize((28,28,3))
     test_image = preprocessing.image.img_to_array(test_image)
     test_image = test_image / 255.0
     test_image = np.expand_dims(test_image, axis=0)
