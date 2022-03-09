@@ -44,10 +44,8 @@ def main():
 def predict(image):
     classifier_model = "retina.h5"
     IMAGE_SHAPE = (28, 28,3)
-    #test_image = cv2.resize(image,(28,28))     # resize image to match model's expected sizing
+    model = load_model(classifier_model,compile=False,)
     test_image = image.resize((28,28))
-    test_image = image.reshape(-1,28,28,3)
-    model = load_model(classifier_model, compile=False)
     test_image = preprocessing.image.img_to_array(test_image)
     test_image = test_image / 255.0
     test_image = np.expand_dims(test_image, axis=0)
