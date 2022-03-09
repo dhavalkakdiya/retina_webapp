@@ -9,6 +9,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras import preprocessing
 import time
 import cv2
+
 fig = plt.figure()
 
 with open("custom.css") as f:
