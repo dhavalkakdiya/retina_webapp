@@ -8,7 +8,7 @@ from tensorflow import keras
 from tensorflow.keras.models import load_model
 from tensorflow.keras import preprocessing
 import time
-import cv2
+#import cv2
 
 fig = plt.figure()
 
