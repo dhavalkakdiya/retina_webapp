@@ -39,11 +39,11 @@ def main():
                 st.pyplot(fig)
 
 
-def predict(image):
+def predict(test_image):
     classifier_model = "retina_model.h5"
     IMAGE_SHAPE = (28, 28,3)
     model = load_model(classifier_model)
-    test_image = image.reshape(28,28,3)
+    #test_image = test_image.resize((28,28))
     test_image = preprocessing.image.img_to_array(test_image)
     test_image = test_image / 255.0
     test_image = np.expand_dims(test_image, axis=0)
