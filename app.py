@@ -50,7 +50,7 @@ def predict(image):
     test_image = preprocessing.image.img_to_array(test_image)
     
     test_image = test_image / 255.0
-    test_image = np.expand_dims(test_image, axis=-1)
+    test_image = np.expand_dims(test_image, axis=0)
     class_names = ['No',
           'Mild',
           'Moderate',
