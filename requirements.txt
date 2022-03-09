@@ -3,3 +3,4 @@ streamlit ==1.7.0
 numpy ==1.21.3
 imblearn ==0.0
 matplotlib ==3.4.3
+cv2
