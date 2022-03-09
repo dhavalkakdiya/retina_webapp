@@ -39,11 +39,11 @@ def main():
                 st.pyplot(fig)
 
 
-def predict(test_image):
+def predict(image):
     classifier_model = "retina_model.h5"
     IMAGE_SHAPE = (28, 28,3)
     model = load_model(classifier_model)
-    #test_image = test_image.resize((28,28))
+    test_image = image.resize((28,28))
     test_image = preprocessing.image.img_to_array(test_image)
     test_image = test_image / 255.0
     test_image = np.expand_dims(test_image, axis=0)
@@ -54,7 +54,7 @@ def predict(test_image):
           'Proliferative'
           ]
     predictions = model.predict(test_image)
-    scores = tf.nn.softmax(predictions[0])
+    scores = tf.nn.elu(predictions[0])
     scores = scores.numpy()
     results = {
           'No': 0,
