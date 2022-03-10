@@ -1,5 +1,5 @@
 import streamlit as st
-from PIL import Image
+from PIL import Image, ImageOps
 import matplotlib.pyplot as plt
 
 import tensorflow as tf
@@ -45,12 +45,24 @@ def predict(image):
     classifier_model = "retina.h5"
     IMAGE_SHAPE = (28, 28,3)
     model = load_model(classifier_model,compile=False,)
-    test_image = image.resize((28,28),Image.ANTIALIAS)
     
-    test_image = preprocessing.image.img_to_array(test_image)
+    data = np.ndarray(shape=(1,28,28,3))
+    test_image = image
+    size=(28,28)
+    test_image = ImageOps.fit(test_image,size,Image.ANTIALIAS)
     
-    test_image = test_image / 255.0
-    test_image = np.expand_dims(test_image, axis=0)
+    image_array = np.asarray(test_image)
+    
+    normalized_image_array = image_array /255.0
+    
+    data[0]= normalized_image_array
+    
+    #test_image = image.resize((28,28),Image.ANTIALIAS)
+    #test_image = preprocessing.image.img_to_array(test_image)
+    #test_image = test_image / 255.0
+    #test_image = np.expand_dims(test_image, axis=0)
+    
+    
     #test_image = np.repeat(test_image,-1, axis = 0)
     class_names = ['No',
           'Mild',
@@ -58,7 +70,7 @@ def predict(image):
           'Severe',
           'Proliferative'
           ]
-    predictions = model.predict(test_image)
+    predictions = model.predict(data)
     scores = tf.nn.softmax(predictions[0])
     scores = scores.numpy()
     results = {
