@@ -42,7 +42,7 @@ def main():
 
 
 def predict(image):
-    classifier_model = "retina.h5"
+    classifier_model = "retina_best_seq.h5"
     IMAGE_SHAPE = (28, 28,3)
     model = load_model(classifier_model,compile=False,)
     
