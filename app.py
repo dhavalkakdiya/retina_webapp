@@ -64,11 +64,11 @@ def predict(image):
     
     
     #test_image = np.repeat(test_image,-1, axis = 0)
-    class_names = ['No retinopathy',
-          'Mild retinopathy',
-          'Moderate retinopathy',
-          'Severe retinopathy',
-          'Proliferative '
+    class_names = ['No retinopathy: class 0',
+          'Mild retinopathy: class 1',
+          'Moderate retinopathy: class 2',
+          'Severe retinopathy: class 3',
+          'Proliferative: class 4 '
           ]
     predictions = model.predict(data)
     scores = tf.nn.softmax(predictions[0])
